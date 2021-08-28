@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil
+{% endblock %}
+
+
+{% block body %}
+
+<!-- banner -->
+<div class="banner">
+	<div class="container">
+		
+		<div class="agileits_w3layouts_banner_info">
+			<div class="col-md-8 w3-agileits-bann">
+				<h2>LOUER SA MAISON
+												OU SON APPARTEMENT
+												POUR LE TOURNAGE D'UN FILM
+				</h2>
+				<p>Un site dédié aux particuliers et aux professionnels.</p>
+			</div>
+			<div class="col-md-4 w3-agile-bann">
+				<ul>
+					<li>
+						<i class="fa fa-university" aria-hidden="true"></i>Location immobilier</li>
+					<li>
+						<i class="fa fa-car" aria-hidden="true"></i>Location véhicules</li>
+					<li>
+						<i class="fa fa-paw" aria-hidden="true"></i>Location animaux</li>
+					<li>
+						<i class="fa fa-external-link" aria-hidden="true"></i>Habits et costumes</li>
+					<li>
+						<i class="fa fa-area-chart" aria-hidden="true"></i>Accessoires</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->	
+<!-- agileinfo -->
+<div class="agileinfo-services">
+	<div class="container">
+		<h3 class="w3l_head w3l_head1">Les professionnels du cinéma et de la photo recherchent...</h3>
+		<p class="w3ls-p">Découvrez les dernières annonces postées par les sociétés de production, chaînes TV ou photographes.		</p>
+		
+		{% for annonce in annonces %}
+
+	{% if annonce.status ==1 %}
+
+	<div class="w3_agileits_services_grids">
+		<div class="col-md-4 w3_agileits_services_grid">
+			<div class="w3_agileits_services_grid_agile">
+				<div class="w3_agileits_services_grid_1">
+					<img src="{{asset('/uploads/images/annonces/' ~ annonce.Image)}}" alt="" height="300" width="300">
+				</div>
+				<h3>{{annonce.description}}</h3>
+				<p>{{annonce.titre}} de {{annonce.NbrEtages}} etages, qui posséde {{annonce.NbrChambres}} chambres.
+					{% if annonce.garage==1 %} possede un garage {% else %} ne possede pas garage. 	{% endif %}
+					son prix est {{annonce.prix}} DT.
+
+				</p>
+			</div>
+		</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+</div>
+<!-- //agileinfo -->
+{% if not app.user %}
+
+<!-- services-bottom -->
+<div style="background:url(../images/banner1.jpg) no-repeat 0px 0px;
+						background-size:cover;
+						-webkit-background-size:cover;
+						-moz-background-size:cover;
+						-o-background-size:cover;
+						-ms-background-size:cover;
+						min-height:300px;">
+<div class="col-md-12 agile_services_bottom_grid_left">
+	<h3 align="center">
+		<span>Rejoignez
+		</span>
+		aujourd'hui la plus grande communauté de lieux de tournage</h3>
+	<p class="eum" align="center">Le moyen le plus simple pour louer sa maison pour le cinéma !
+	</p>
+	<div align="center">
+		<a href="{{path('inscription')}}"style="color: #e5eb0b !important;
+											                border-color: #e5eb0b;
+											                background-color: rgba(229, 235, 11, 0.2);">créer un compte</a>
+	</div>
+</div>
+</div>
+{% endif %}
+
+<!-- //services-bottom -->
+
+{% endblock %}

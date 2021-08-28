@@ -1,0 +1,157 @@
+{% extends 'baseForm2.html.twig' %}
+
+{% block title %}Ajout d'une annonce
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container">
+        
+            <div class="row" style="margin-top: -40px;">
+        
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb30 text-center">
+                            <h2>Ajouter votre annonce</h2>
+                        </div>
+            </div>
+        <div class="row" style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+        
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb30">
+                            <div>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <h4 class="tour-form-title">Les Détails de votre annonce</h4>
+                                        </div>
+                                        {{form_start(form)}}
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label required">Titre</label>
+                                                {{form_widget(form.Titre,{ 'attr': {'class': 'form-control'} })}}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label" for="textarea">Description</label>
+                                                <div class="input-group"style="width: 100%;">
+                                                    {{form_widget(form.Description,{ 'attr': {'class': 'form-control'} })}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label required">Type de tarification:</label>
+                                                <div class="select">
+                                                    {{form_widget(form.typeTarification,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label required">Prix</label>
+                                                {{form_widget(form.Prix,{ 'attr': {'class': 'form-control'} })}}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <div class="form-group">
+                                                <label class="control-label required">Catégorie:</label>
+                                                <div class="select">
+                                                    {{form_widget(form.categorie,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt30">
+                                            <h4 class="tour-form-title">Donnés relatives à l'annonce</h4>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Addresse:</label>
+                                                {{form_widget(form.Adresse,{ 'attr': {'class': 'form-control'} })}}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label"> Ville</label>
+                                                <div class="select">
+                                                    {{form_widget(form.ville,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label"> Code Postal</label>
+                                                    {{form_widget(form.CodePostal,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>                                          
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Surface</label>
+                                                <div class="select">
+                                                    {{form_widget(form.Surface,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Nombre de pièces</label>
+                                                <div class="select">
+                                                    {{form_widget(form.NbrChambres,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>                                             </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Nombre d'étages</label>
+                                                    {{form_widget(form.NbrEtages,{ 'attr': {'class': 'form-control'} })}}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label" for="textarea">Garage ?</label>
+                                                <div class="select" style="width: 50%;">
+                                                    {{form_widget(form.Garage,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label" for="textarea">Parking ?</label>
+                                                <div class="select" style="width: 50%;">
+                                                    {{form_widget(form.Parking,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>                                      
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group"²>
+                                                <label class="control-label"> ajouter une image à votre annonce</label>
+                                                <div align="center">
+                                                    {{form_widget(form.Image)}}
+
+                                                </div>                                      
+                                            </div>
+                                        </div>
+
+                                    </br></br></br></br></br>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" align="center">
+                                            <div>
+                                                <input type="submit" name="singlebutton" class="btn btn-primary" value="valider">
+                                            </div>
+                                            {{form_end(form)}}
+                                        </div>
+
+                                    </div>
+
+                            </div>
+                            
+                        </div>
+ </div>
+ </div>
+ </div>
+ 
+{% endblock %}

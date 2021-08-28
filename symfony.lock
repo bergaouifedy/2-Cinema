@@ -88,6 +88,15 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "ip2location/ip2location-php": {
+        "version": "9.2.1"
+    },
+    "knplabs/knp-components": {
+        "version": "v3.1.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.6.0"
+    },
     "laminas/laminas-code": {
         "version": "4.4.2"
     },

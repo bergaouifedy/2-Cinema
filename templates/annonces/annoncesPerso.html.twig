@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Annonces {% endblock %}
+
+{% block body %}
+</div>
+</div>
+<div class="agileits-gal">
+    <div class="container">
+
+        <h2 class="w3ls_head">Mes Annonces </h2>
+        {% for annonce in annonces %}
+        <div class="col-md-4 gal-left">
+            {% if annonce.status ==1 %}
+            {% if annonce.user == app.user %}
+
+            <div class="content-grid-effect slow-zoom vertical text-center">
+                <a href="/images/1.jpg" class="b-link-stripe b-animate-go  swipebox">
+                    <div class="img-box">
+                        <img src="{{asset('/uploads/images/annonces/' ~ annonce.image)}}" alt="image" class="img-responsive zoom-img">	
+                    </div>
+            
+                    <div class="info-box">
+                        <div class="info-content">
+                            <h4>{{annonce.titre}}</h4>
+                            <span class="separator"></span>
+                            <p>{{annonce.description}}</p>
+                            <a href="{{path('detailsAnnonce',{id: annonce.id})}}" style="color:aliceblue">Cliquez ici pour voir plus de détails</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endif %}
+
+        </div>
+        {% endfor %}
+       </div>
+</div>
+
+{% endblock %}

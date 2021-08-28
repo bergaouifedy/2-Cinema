@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="keywords" content="Freehold Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+																											        Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+																													<meta http-equiv="X-UA-Compatible" content="IE=edge">
+																													<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			
+			{% block title %}
+
+			{% endblock %}
+		</title>
+	
+	
+		{% block stylesheets %}
+			<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+			<link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+			<link href="/css/form.css" rel="stylesheet" type="text/css" media="all"/>
+
+			<link
+			rel="stylesheet" href="/css/font-awesome.min.css"/>
+			<!-- //font-awesome icons -->
+			<link href="//fonts.googleapis.com/css?family=Varela+Round&subset=hebrew" rel="stylesheet">
+			<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+
+            <!-- Custom stlylesheet -->
+            <link type="text/css" rel="stylesheet" href="/css/Choix/style.css" />
+
+		{% endblock %}
+
+		{% block javascripts %}
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+			<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+			<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen"/>
+			<script defer src="/js/jquery.flexslider.js"></script>
+
+			 <script>
+        $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
+    </script>
+		{% endblock %}
+	</head>
+
+
+	<body>
+
+
+		<!-- banner -->
+		<div style="background-color: rgb(59, 58, 58);">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header navbar-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1>
+							<a class="navbar-brand" href="/" style="margin-bottom: 10px;">CineVilla</a>
+						</h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<nav class="cl-effect-13" id="cl-effect-13">
+							<ul class="nav navbar-nav">
+								<li>
+									<a href="/">Accueil</a>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Les annonces<b class="caret"></b></a>
+									<ul class="dropdown-menu agile_short_dropdown">
+										<li><a href="{{path('annonces_immobiliers')}}">Immobilier</a></li>
+										<li><a href="typography.html">Autres</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">Le fonctionnement</a>
+								</li>
+								<li>
+									<a href="#">Contact</a>
+								</li>
+								{% if not app.user %}
+									<li>
+										<a href="{{path('Choix_Role_Page')}}">Inscription</a>
+									</li>
+									<li>
+										<a href="{{path('connexion')}}">Login</a>
+									</li>
+								{% else %}
+									<li class="dropdown">
+
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile
+											{% if app.user.PhotoProfil %}
+												<img src="{{asset('/uploads/images/annonces/' ~ app.user.PhotoProfil)}}" alt="Admin" class="rounded-circle" width="20">
+											{% else %}
+												<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User" class="rounded-circle" width="20">
+											{% endif %}
+											<b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu agile_short_dropdown">
+											{% if is_granted("ROLE_ADMIN") %}
+												<li>
+													<a href="{{path('admin_index')}}">Espace admin</a>
+												</li>
+											{% endif %}
+											{% if is_granted("ROLE_USER") %}
+											<li>
+												<a href="{{path('annonces_perso')}}">Voir mes annonces</a>
+											</li>
+											<li>
+												<a href="{{path('annonces_perso')}}">Voir les feed-backs</a>
+											</li>
+											{% endif %}
+											<li>
+												<a href="{{path('user_profile')}}">Gérer mon profile</a>
+											</li>
+											<li>
+												<a href="{{path('annonces_favori')}}">Liste des favoris</a>
+											</li>
+											<li>
+												<a href="{{path('deconnexion')}}">Déconnexion</a>
+											</li>
+										</ul>
+									</li>
+								{% endif %}
+
+							</ul>
+
+						</nav>
+					</div>
+				</nav>
+			</div>
+		</div>
+		
+
+		{% block body %}{% endblock %}
+
+		<!-- footer -->
+		<div class="footer-top">
+			<div class="container">
+				<div class="col-md-3 w3ls-footer-top">
+					<h3>LIENS RAPIDES</h3>
+					<ul>
+						<li><a href="#">Accueil</a></li>
+						<li><a href="#">Annonces</a></li>
+						<li><a href="#">fonctionnalités</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 wthree-footer-top">
+					<h3>SUPPORT</h3>
+					<ul>
+						<li>
+							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+							Technopôle Manouba
+														A2 Bureau N°3 Manouba 2010
+														11 Rue Ziedallah Bardo Tunis 2000</li>
+						<li>
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+							<a href="mailto:direction@sqli-services.com">direction@sqli-services.com</a>
+						</li>
+						<li>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+							+216 70 526 334</li>
+					</ul>
+				</div>
+
+				<div class="col-md-5 w3l-footer-top">
+					<h3>SQLI-Services</h3>
+					<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit reprehenderit qui in ea.</p>
+
+
+				</div>
+				<div class="clearfix"></div>
+				<div class="footer-w3layouts">
+					<div class="agile-copy">
+						<p>© 2021 CinemaVillage. All rights reserved | Design by
+							<a href="https://www.sqli-services.com">SQLI-SERVICES</a>
+						</p>
+					</div>
+					<div class="agileits-social">
+						<ul>
+							<a href="https://www.facebook.com/sqliservices/" class="fa fa-facebook color-icon" title="facebook"></a>
+							<a href="https://www.twitter.com/#" class="fa fa-twitter color-icon" title="twitter"></a>
+							<a href="https://www.plus.google.com/#" class="fa fa-google color-icon" title="google"></a>
+							<a href="https://www.youtube.com/#" class="fa fa-youtube-play color-icon" title="youtube-play"></a>
+							<a href="https://www.linkedin.com/#" class="fa fa-linkedin color-icon" title="linkedin"></a>
+						</ul>
+
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+	<script src="js/form.js"></script>
+
+<!-- //for bootstrap working -->
+
+		<!-- //footer -->
+	</body>
+</html>

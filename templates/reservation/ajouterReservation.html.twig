@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GestionAnnonceController!
+{% endblock %}
+
+{% block body %}
+<section id="main-content">
+    <section class="wrapper">
+        <div style="margin-left: 35%;">
+            <div>
+                <div>
+                    <div></div>
+                    <div style=" background-color:#FAFAFA;
+                    padding:10px;
+                    width:280px;">
+                        <fieldset style="padding:0 20px 20px 20px;
+                        margin-bottom:10px;
+                        border:1px solid #DF3F3F;">
+                            <legend style="color:#DF3F3F;
+                            font-weight:bold">Ajout reservation</legend>
+                        <h2></h2>
+                        {{form_start(form)}}
+                        
+                            {{form_widget(form)}}
+                            <div class="p-t-20">
+                                <input type="submit" class="btn btn--radius btn--green" value="valider">
+                            </div>
+                            {{form_end(form)}}
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+    
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/images.js') }}"></script>
+{% endblock %}
