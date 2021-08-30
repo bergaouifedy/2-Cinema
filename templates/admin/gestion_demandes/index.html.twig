@@ -1,0 +1,68 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Demande index{% endblock %}
+
+{% block body %}
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row mt">
+            <div class="col-md-12">
+                <div class="content-panel">
+    <h1>Demande index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datetournage</th>
+                <th>Duree</th>
+                <th>Nombreeffectif</th>
+                <th>DateDemande</th>
+                <th>Description</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Adresse</th>
+                <th>Nomsociete</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande in demandes %}
+            <tr>
+                <td>{{ demande.id }}</td>
+                <td>{{ demande.datetournage ? demande.datetournage|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ demande.duree }}</td>
+                <td>{{ demande.nombreeffectif }}</td>
+                <td>{{ demande.dateDemande ? demande.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ demande.description }}</td>
+                <td>{{ demande.nom }}</td>
+                <td>{{ demande.prenom }}</td>
+                <td>{{ demande.email }}</td>
+                <td>{{ demande.telephone }}</td>
+                <td>{{ demande.adresse }}</td>
+                <td>{{ demande.nomsociete }}</td>
+                <td>{{ demande.etat }}</td>
+                <td>
+                    <a href="{{ path('demande_show_admin', {'id': demande.id}) }}">show</a>
+                    {% if demande.etat == "En attente" %}
+                    <a href="{{ path('valider_demande', {'id': demande.id}) }}">Accepter</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+    </div>
+    </div>
+    </section>
+</section>
+{% endblock %}

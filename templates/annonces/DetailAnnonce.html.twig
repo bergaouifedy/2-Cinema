@@ -699,9 +699,14 @@
 			left: 0;
 			opacity: 1
 		}
-	</style>
 
+		#calendrier{
+            width: 80%;
+            margin: auto;
+        }
+	</style>
 <div
+
 	class="col-sm-12 col-md-12 col-lg-12">
 	<!-- product -->
 	<div class="product-content product-wrap clearfix product-deatil">
@@ -738,6 +743,7 @@
 			<div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
 				<h2 class="name">
 					{{annonce.titre}}
+
 					<small>publié par
 						<a href="javascript:void(0);">{{annonce.user.username}} <img src="{{asset('/uploads/images/annonces/' ~ annonce.user.PhotoProfil)}}" alt="Admin" class="rounded-circle" width="40">
 
@@ -819,10 +825,13 @@
 						
 							<a class="btn btn-white btn-default" target="__blank" href="{{path('annonce_update',{id: annonce.id})}}">Modifier</a>
 							<a class="btn btn-white btn-default" target="__blank" href="{{path('feed_back',{id: annonce.id})}}">Voir les avis</a>
+							<a class="btn btn-white btn-default" target="__blank" href="{{path('calendrier_annonce',{id: annonce.id})}}">Voir calendrier</a>
 
 						{% endif %}
-						
+
 					</div>
+
+					
 
 					</div>
 				</div>

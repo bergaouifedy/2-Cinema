@@ -6,11 +6,14 @@ use App\Entity\Annonces;
 use App\Repository\AnnoncesRepository;
 use App\Repository\CategorieRepository;
 use App\Entity\categorie;
+use App\Entity\Demande;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class GestionAnnonceController extends AbstractController
 {
@@ -94,7 +97,8 @@ class GestionAnnonceController extends AbstractController
         return $this->redirect($this->generateUrl('tousannonces'));
 
     }
- /**
+    
+    /**
      * @Route("/admin/touscategories", name="touscategorie")
      */
     public function AllCategories(CategorieRepository $repository): Response
@@ -104,5 +108,45 @@ class GestionAnnonceController extends AbstractController
             'categorie' => $categorie,
         ]);
     }
+
+     /**
+     * @Route("/admin/DetailsDemande/download/{id}", name="downloadData")
+     */
+    public function demandeData(Demande $demande)
+    {
+        $pdfOptions = new Options();
+        // Police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+
+        // On génère le html
+        $html = $this->renderView('admin/gestion_demandes/download.html.twig', ['demande' => $demande,]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // On génère un nom de fichier
+        $fichier = 'user-data-'. $demande->getNomsociete() .'.pdf';
+
+        // On envoie le PDF au navigateur
+        $dompdf->stream($fichier, [
+            'Attachment' => true
+        ]);
+
+        return new Response();
+    }
+
 
 }

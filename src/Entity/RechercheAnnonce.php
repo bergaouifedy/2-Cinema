@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Entity;
- 
+
 
 class RechercheAnnonce
 {
     /**
-     * @var int|null
+     * @var string|null
      */
     private $ville;
 
@@ -14,6 +14,12 @@ class RechercheAnnonce
      * @var int|null
      */
     private $maxPrix;
+
+      /**
+     * @var object|null
+     
+     */
+    private $category;
 
   
 
@@ -25,6 +31,17 @@ class RechercheAnnonce
     public function setVille(string $ville): self
     {
         $this->ville= $ville;
+        return $this;
+    }
+
+    public function getCategory(): ?object
+    {
+        return $this->category;
+    }
+
+    public function setCategory(object $category): self
+    {
+        $this->category= $category;
         return $this;
     }
 

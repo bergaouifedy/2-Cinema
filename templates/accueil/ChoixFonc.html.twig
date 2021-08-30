@@ -1,0 +1,93 @@
+{% extends 'base3.html.twig' %}
+
+{% block title %} Comment ça marche  {% endblock %}
+
+	{% block stylesheet %}
+		<link href="{{asset('/css/integration.css')}}" rel="stylesheet">
+	
+
+ <style>
+
+
+      a.box_feat i {
+      	color: #6dcff6;
+      }
+   
+
+
+.min-height{
+	min-height: 240px;
+}
+
+
+</style>
+
+ {% endblock %}
+
+{% block body %}
+
+
+          
+			<div class="container margin_80_55">
+
+
+                <div class="main_title_2">
+				<span><em></em></span>
+				<h3>Vous êtes qui ?</h3>
+			
+
+				
+			</div>
+
+
+				
+ 
+                        
+
+
+                   <div class="row">
+
+                    <div class="col-lg-4 col-md-6" style="float: left;">
+					<a class="box_feat min-height" href="{{path('fonctionnementPro')}}">
+						<i class=" icon_set_1_icon-94"></i>
+						<h3>Un Professionnel</h3>
+					
+					</a>
+				</div>
+
+                <div class="col-lg-4 col-md-6" >
+					<a class="box_feat min-height">
+						<i ></i>
+						<h3>ou</h3>
+						
+					</a>
+				</div>
+				
+				<div class="col-lg-4 col-md-6" >
+					<a class="box_feat min-height" href="{{path('fonctionnement')}}">
+						<i class="icon_set_1_icon-32"></i>
+						<h3>Un Particulier</h3>
+						
+					</a>
+				</div>
+
+
+
+
+						
+					</div>
+				</div>
+				<!--/row-->
+		
+	
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

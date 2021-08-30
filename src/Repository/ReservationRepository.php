@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Reservation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -51,7 +52,45 @@ class ReservationRepository extends ServiceEntityRepository
         // returns an array of Product objects
         return $query->getResult();
     }
+
+   public function findReservationAcceptee($idUser)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT r
+            FROM App\Entity\Reservation r
+            WHERE r.loueur = :idUser
+            AND r.etat LIKE :Reservation 
+            ')         
+            
+            ->setParameter('idUser' , $idUser )
+            ->setParameter('Reservation' , 'Reservation acceptée' );
+
+        // returns an array of Product objects
+        return $query->getResult();
+
+    }
+
+
+   /* public function findReservationAcceptee($idUser)
+    {
+        $query = $this->findAllReservations();
+        $query = $query
+        ->where('r.loueur = :idUser' )
+        ->setParameter('idUser' , $idUser )
     
+        ;
+        return $query->getQuery();
+
+
+    }*/
+    
+    public function findAllReservations():QueryBuilder
+    {
+        return $this->createQueryBuilder('r');
+    }
+
     public function findReservation(int $idUser,$idAnnonce)
     {
         $entityManager = $this->getEntityManager();
@@ -62,6 +101,22 @@ class ReservationRepository extends ServiceEntityRepository
             WHERE r.client = :idUser
             And r.annonce= :idAnnonce'
         )->setParameter('idUser' , $idUser)
+        ->setParameter('idAnnonce', $idAnnonce);
+
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+    
+    public function findReservationParAnnonce($idAnnonce)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT r
+            FROM App\Entity\Reservation r
+            WHERE r.annonce= :idAnnonce'
+        )
         ->setParameter('idAnnonce', $idAnnonce);
 
 

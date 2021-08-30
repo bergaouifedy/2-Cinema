@@ -1,0 +1,69 @@
+{% extends "basePdf.html.twig" %}
+
+{% block title %}Données  {% endblock %}
+{% block body %}
+    <h1>Demande d'autorisation pour {{demande.nomsociete}}</h1>
+    <h2>Vos données</h2>
+    <table border=1>
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ demande.nom }}</td>
+                <td>{{ demande.prenom }}</td>
+                <td>{{ demande.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Demande</h2>
+    
+        <table class="table">
+            <tbody>
+              
+                <tr>
+                    <th>Date de tournage</th>
+                    <td>{{ demande.datetournage ? demande.datetournage|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Durée</th>
+                    <td>{{ demande.duree }} jours</td>
+                </tr>
+                <tr>
+                    <th>Nombre de l'effectif</th>
+                    <td>{{ demande.nombreeffectif }}</td>
+                </tr>
+                <tr>
+                    <th>Date de Demande</th>
+                    <td>{{ demande.dateDemande ? demande.dateDemande|date('d-m-Y') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ demande.description }}</td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td>{{ demande.telephone }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ demande.adresse }}</td>
+                </tr>
+                <tr>
+                    <th>Nom de la societe de production</th>
+                    <td>{{ demande.nomsociete }}</td>
+                </tr>
+                <tr>
+                    <th>Etat</th>
+                    <td>{{ demande.etat }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+
+   
+{% endblock %}

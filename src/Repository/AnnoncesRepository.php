@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Annonces;
+use App\Entity\categorie;
+
 use App\Entity\RechercheAnnonce;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -36,6 +38,13 @@ class AnnoncesRepository extends ServiceEntityRepository
             $query = $query
             ->andWhere('a.ville = :ville')
             ->setParameter('ville', $search->getVille());
+        }
+        if ($search->getCategory())
+        {
+            $query = $query
+            ->innerJoin('a.categorie','c')
+            ->andWhere('c = :categorie')
+            ->setParameter('categorie', $search->getCategory());
         }
         return $query->getQuery();
     }

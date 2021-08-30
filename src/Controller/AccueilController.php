@@ -24,6 +24,31 @@ class AccueilController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/fonctionnementPro", name="fonctionnementPro")
+     */
+    public function fonctionnementPro(Request $request)
+    {
+        return $this->render('accueil/FonctionnementPro.html.twig');
+    }
+
+
+     /**
+     * @Route("/ChoixFonc", name="ChoixFonc")
+     */
+    public function ChoixFonc(Request $request)
+    {
+        return $this->render('accueil/ChoixFonc.html.twig');
+    }
+
+
+    /**
+     * @Route("/fonctionnement", name="fonctionnement")
+     */
+    public function fonctionnement(Request $request)
+    {
+        return $this->render('accueil/Fonctionnement.html.twig');
+    }
       /**
      * @Route("/contact", name="contact")
      */

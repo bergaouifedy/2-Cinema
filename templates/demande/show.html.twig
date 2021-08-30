@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande{% endblock %}
+
+{% block body %}
+    <h1>Demande</h1>
+
+    <table class="table">
+        <tbody>
+          
+            <tr>
+                <th>Date de tournage</th>
+                <td>{{ demande.datetournage ? demande.datetournage|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Durée</th>
+                <td>{{ demande.duree }} jours</td>
+            </tr>
+            <tr>
+                <th>Nombre de l'effectif</th>
+                <td>{{ demande.nombreeffectif }}</td>
+            </tr>
+            <tr>
+                <th>Date de Demande</th>
+                <td>{{ demande.dateDemande ? demande.dateDemande|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ demande.description }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ demande.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ demande.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ demande.email }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ demande.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ demande.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Nom de la societe de production</th>
+                <td>{{ demande.nomsociete }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ demande.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('demande_edit', {'id': demande.id}) }}">edit</a>
+
+    {{ include('demande/_delete_form.html.twig') }}
+{% endblock %}

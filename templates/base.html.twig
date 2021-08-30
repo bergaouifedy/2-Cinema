@@ -15,7 +15,7 @@
 			{% endblock %}
 		</title>
 	
-	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css" integrity="sha256-FjyLCG3re1j4KofUTQQXmaWJw13Jdb7LQvXlkFxTDJI=" crossorigin="anonymous">
 		{% block stylesheets %}
 			<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
 			<link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -31,9 +31,12 @@
 
             <!-- Custom stlylesheet -->
             <link type="text/css" rel="stylesheet" href="/css/Choix/style.css" />
+			
+
+			
 
 		{% endblock %}
-
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js" integrity="sha256-8nl2O4lMNahIAmUnxZprMxJIBiPv+SzhMuYwEuinVM0=" crossorigin="anonymous"></script>
 		{% block javascripts %}
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -75,12 +78,15 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Les annonces<b class="caret"></b></a>
 									<ul class="dropdown-menu agile_short_dropdown">
 										<li><a href="{{path('annonces_immobiliers')}}">Immobilier</a></li>
-										<li><a href="typography.html">Autres</a></li>
+										{% if is_granted("ROLE_PROFESSIONNEL") %}
+										<li><a href="{{path('demande_new')}}">Demande autorisation</a></li>
+										{% endif %}
 									</ul>
 								</li>
 								<li>
-									<a href="#">Le fonctionnement</a>
+									<a href="{{path('ChoixFonc')}}">Le fonctionnement</a>
 								</li>
+								
 								<li>
 									<a href="{{path('contact')}}">Contact</a>
 								</li>

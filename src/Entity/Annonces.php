@@ -130,11 +130,7 @@ class Annonces
 
 
 
-   /**
-     * @ORM\OneToMany(targetEntity="Disponibilite", mappedBy="annonce")
-     * 
-     */
-    private $disponibilite;
+
 
 
     /**
@@ -449,30 +445,6 @@ class Annonces
     }
 
     
-   
-    public function addDisponibilite(Disponibilite $disponibilite)
-    {
-        $this->disponibilite[] = $disponibilite;
-
-        return $this;
-    }
-
-   
-    public function removeDisponibilite(Disponibilite $disponibilite)
-    {
-        $this->disponibilite->removeElement($disponibilite);
-    }
-
-    /**
-     * Get disponibilite
-     *
-     * @return Collection|Disponibilite[]
-     */
-    public function getDisponibilite()
-    {
-        return $this->disponibilite;
-    }
-
     /**
      * @return Collection|Favori[]
      */

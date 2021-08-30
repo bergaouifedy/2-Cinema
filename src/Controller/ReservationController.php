@@ -7,6 +7,7 @@ use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use SebastianBergmann\Environment\Console;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,7 +62,7 @@ class ReservationController extends AbstractController
         $em->flush();
         $user = $this->getUser();
         $idUser = $user->getId();
-        $reservation = $rep->findReservationParClient($idUser);
+        $reservation = $rep->findReservationAcceptee($idUser);
 
         return $this->render(  'reservation/showAll.html.twig',
         array('res' => $reservation,));
@@ -78,10 +79,74 @@ class ReservationController extends AbstractController
         $em->flush();
         $user = $this->getUser();
         $idUser = $user->getId();
-        $reservation = $rep->findReservationParClient($idUser);
+
+        $reserva = $rep->findReservationParClient($idUser);
+
+        $reservation = $rep->findReservationAcceptee($idUser);
+
+        $rdvs =  [];
+       
+        foreach ($reservation as $events)
+        {
+           $rdvs[] = [
+            'id' => $events->getId(),
+            'title' => $events->getNomsociete(),
+            'start' => $events->getDatedebut()->format('Y-m-d H:i:s'),
+            'end' => $events->getDatefin()->format('Y-m-d H:i:s'),
+            'allDay' =>$events->getEtat(),
+
+
+           ] ;
+        }
+
+        
+        $data = json_encode($rdvs);
+       
 
         return $this->render(  'reservation/showAll.html.twig',
-        array('res' => $reservation,));
+        array('res' => $reserva,
+        'data' =>$data));
+    }
+
+
+     /**
+     * @Route("/reservation/supprimer/{id}", name="refuser_supprimer")
+     */
+    public function Supprimer(Reservation $res,ReservationRepository $rep)
+    {
+        $res->setEtat('Reservation refusée');
+
+        $em = $this->getDoctrine()->getManager();
+      
+        $em->remove($res);
+        $em->flush();
+
+        $user = $this->getUser();
+        $idUser = $user->getId();
+        $reservation = $rep->findReservationAcceptee($idUser);
+        
+        $rdvs =  [];
+       
+        foreach ($reservation as $events)
+        {
+           $rdvs[] = [
+            'id' => $events->getId(),
+            'title' => $events->getNomsociete(),
+            'start' => $events->getDatedebut()->format('Y-m-d H:i:s'),
+            'end' => $events->getDatefin()->format('Y-m-d H:i:s'),
+            'allDay' =>$events->getEtat(),
+
+
+           ] ;
+        }
+
+        
+        $data = json_encode($rdvs);
+       
+
+        return $this->render(  'reservation/showAll.html.twig',
+        array('res' => $reservation,
+        'data' =>$data));
     }
 
      /**
@@ -89,15 +154,33 @@ class ReservationController extends AbstractController
      */
     public function showAll($id,ReservationRepository $repository) {
 
-        $user = $this->getUser();
-        $idUser = $user->getId();
-
 
         $res = $repository->findReservationParClient($id);
         
+        $reser = $repository->findReservationAcceptee($id);
+
+        $rdvs =  [];
+       
+        foreach ($reser as $events)
+        {
+           $rdvs[] = [
+            'id' => $events->getId(),
+            'title' => $events->getNomsociete(),
+            'start' => $events->getDatedebut()->format('Y-m-d H:i:s'),
+            'end' => $events->getDatefin()->format('Y-m-d H:i:s'),
+            'allDay' =>$events->getEtat(),
+
+
+           ] ;
+        }
+
+        
+        $data = json_encode($rdvs);
+       
         return $this->render(
             'reservation/showAll.html.twig',
-            array('res' => $res,));
+            array('res' => $res,
+                  'data' =>$data));
 
     }
 

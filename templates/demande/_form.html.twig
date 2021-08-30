@@ -1,0 +1,83 @@
+<div class="content">
+    <div class="container">
+        
+            <div class="row" style="margin-top: -40px;">
+        
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb30 text-center">
+                            <h2>Demande d'autorisation de tournage</h2>
+                        </div>
+            </div>
+        <div class="row" style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+        
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb30">
+                            <div>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <h4 class="tour-form-title">Les Détails de votre demande</h4>
+                                        </div>
+                                        {{form_start(form)}}
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label required">Nom de la société de production </label>
+                                                {{form_widget(form.nomsociete,{ 'attr': {'class': 'form-control'} })}}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label" for="textarea">Description</label>
+                                                <div class="input-group"style="width: 100%;">
+                                                    {{form_widget(form.description,{ 'attr': {'class': 'form-control'} })}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label required">Nombre de l'effectif:</label>
+                                                <div class="select">
+                                                    {{form_widget(form.nombreeffectif,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label required">Durée de tournage</label>
+                                                {{form_widget(form.duree,{ 'attr': {'class': 'form-control'} })}}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                            <div class="form-group">
+                                                <label class="control-label required">Date de tournage:</label>
+                                                <div class="select">
+                                                    {{form_widget(form.datetournage,{ 'attr': {'class': 'form-control'} })}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt30">
+                                            <h4 class="tour-form-title">Donnés relatives au lieu de tournage</h4>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Lieu:</label>
+                                                {{form_widget(form.annonce,{ 'attr': {'class': 'form-control'} })}}
+                                            </div>
+                                        </div>
+                                       
+                                    </br></br></br></br></br>
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" align="center">
+                                            <div>
+                                                <input type="submit" name="singlebutton" class="btn btn-primary" value="valider">
+                                            </div>
+                                            {{form_end(form)}}
+                                        </div>
+
+                                    </div>
+
+                            </div>
+                            
+                        </div>
+ </div>
+ </div>
+ </div>

@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\categorie;
 use App\Entity\RechercheAnnonce;
 use Doctrine\DBAL\Types\StringType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -60,7 +62,13 @@ class RechercheAnnonceType extends AbstractType
                 'attr' => [
                     'placeholder' =>'budget maximal'
                 ]
-            ])        
+            ])
+        ->add('category', EntityType::class, [
+                'class' => categorie::class,
+                // this method must return an array of User entities
+                'choice_label' => 'Titre',
+                'multiple' => true,
+                ])        
 
             ;
     }
